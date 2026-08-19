@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#11161B" />
+<meta name="description" content="VolleyStats — suivi de statistiques de volleyball en direct, pendant le match." />
+<title>VolleyStats</title>
+
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="VolleyStats" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app" class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="icons/logo-header.png" alt="" width="48" height="30" />
+      </span>
+      <span class="brand-name">VolleyStats</span>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Écrans">
+      <button class="tab is-active" data-screen="setup" role="tab" aria-selected="true">Saisie</button>
+      <button class="tab" data-screen="dashboard" role="tab" aria-selected="false">Dashboard</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- ===================== ÉCRAN 1 : SAISIE ===================== -->
+    <section id="screen-setup" class="screen is-active">
+
+      <div class="scoreboard">
+        <div class="score-plate">
+          <input class="team-name team-name-a" id="input-team-a" maxlength="20" aria-label="Nom de l'équipe A" />
+          <span class="score-number" id="score-a">0</span>
+        </div>
+        <div class="score-mid">SET</div>
+        <div class="score-plate">
+          <input class="team-name team-name-b" id="input-team-b" maxlength="20" aria-label="Nom de l'équipe B" style="text-align:right" />
+          <span class="score-number" id="score-b">0</span>
+        </div>
+      </div>
+
+      <div class="team-columns">
+        <div class="team-col" data-side="a">
+          <div class="stat-buttons" id="stats-a"></div>
+        </div>
+        <div class="team-col" data-side="b">
+          <div class="stat-buttons" id="stats-b"></div>
+        </div>
+      </div>
+
+      <div class="point-b-block">
+        <button class="btn-point-b" id="btn-point-b">
+          Point <span id="point-b-label">équipe B</span> +1
+        </button>
+        <p class="hint" id="point-b-hint"></p>
+      </div>
+
+      <div class="card sideout-card">
+        <div class="card-title">
+          <span class="card-title-main">Suivi détaillé</span>
+          <span class="card-title-sub" id="sideout-team-label">— équipe A uniquement</span>
+        </div>
+        <div class="sideout-grid" id="sideout-buttons"></div>
+      </div>
+
+      <div class="bottom-actions">
+        <button class="btn btn-ghost" id="btn-undo" disabled>Annuler la dernière action</button>
+        <button class="btn btn-primary" id="btn-goto-dashboard">Voir le dashboard live →</button>
+      </div>
+
+      <div class="reset-row">
+        <button class="btn-text-danger" id="btn-reset">Réinitialiser le match</button>
+      </div>
+
+    </section>
+
+    <!-- ===================== ÉCRAN 2 : DASHBOARD ===================== -->
+    <section id="screen-dashboard" class="screen">
+
+      <div class="scoreboard">
+        <div class="score-plate">
+          <span class="team-name-readonly" id="dash-name-a">Équipe A</span>
+          <span class="score-number" id="dash-score-a">0</span>
+        </div>
+        <div class="score-mid">LIVE</div>
+        <div class="score-plate">
+          <span class="team-name-readonly" id="dash-name-b" style="text-align:right">Équipe B</span>
+          <span class="score-number" id="dash-score-b">0</span>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span class="legend-item"><span class="swatch swatch-a"></span><span id="legend-a">Équipe A</span></span>
+        <span class="legend-item"><span class="swatch swatch-b"></span><span id="legend-b">Équipe B</span></span>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-title-main">Statistiques brutes</span></div>
+        <div id="stacked-bars"></div>
+      </div>
+
+      <div class="ratios-block">
+        <div class="card-title"><span class="card-title-main" id="ratio-title">Ratios — équipe A</span></div>
+        <div class="ratio-grid" id="ratio-cards"></div>
+      </div>
+
+      <button class="btn btn-ghost" id="btn-back-setup">← Retour à la saisie</button>
+
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

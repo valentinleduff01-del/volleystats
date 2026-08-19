@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.volleystats",
+    "sha256_cert_fingerprints": ["2F:5D:17:30:7D:FE:E5:10:8C:76:00:F9:41:CA:70:B1:E8:15:44:5C:25:C1:E1:B4:56:6D:FC:01:A6:D9:A3:18"]
+  }
+}]
